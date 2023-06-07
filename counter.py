@@ -1,9 +1,32 @@
+"""
+This script creates a GUI with counters.
+
+Usage:
+    python script.py [counter_names] [-c counter_values]
+
+Arguments:
+    counter_names (optional): A list of names for the counters.
+    -c counter_values (optional): The initial count value(s) for the counters.
+
+Example usage:
+    python script.py Counter1 Counter2 -c 10 20
+"""
+
 import tkinter as tk
 from tkinter import ttk
 import argparse
 
 
 class Counter:
+    """
+    Class representing a counter widget.
+
+    Parameters:
+        master (tkinter.Tk): The master widget.
+        name (str): The name of the counter.
+        initial_count (int): The initial count value.
+    """
+
     def __init__(self, master, name, initial_count):
         self.master = master
         self.name = name
@@ -65,21 +88,37 @@ class Counter:
         self.decrement_button_10.pack(side="right", padx=10)
 
         # Create a label to display the current count
-        self.label = ttk.Label(
-            self.frame, text=self.count, font=("Helvetica", 20)
-        )
+        self.label = ttk.Label(self.frame, text=self.count, font=("Helvetica", 20))
         self.label.pack(expand=True)
 
     def increment(self, value=1):
+        """
+        Increments the count by the given value.
+
+        Parameters:
+            value (int): The value to increment the count by.
+        """
+
         self.count += value
         self.label.config(text=self.count)
 
     def decrement(self, value=1):
+        """
+        Decrements the count by the given value.
+
+        Parameters:
+            value (int): The value to decrement the count by.
+        """
+
         self.count -= value
         self.label.config(text=self.count)
 
 
 def main():
+    """
+    Entry point of the program.
+    """
+
     parser = argparse.ArgumentParser(
         description="A program to create a window with one or more counters"
     )

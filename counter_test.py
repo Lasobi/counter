@@ -2,8 +2,8 @@ import unittest
 from counter import Counter
 import tkinter as tk
 
-class TestCounter(unittest.TestCase):
 
+class TestCounter(unittest.TestCase):
     def setUp(self):
         self.root = tk.Tk()
         self.counter = Counter(self.root, "TestCounter", 0)
@@ -18,5 +18,6 @@ class TestCounter(unittest.TestCase):
         self.counter.decrement()
         self.assertEqual(self.counter.count, 1)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
